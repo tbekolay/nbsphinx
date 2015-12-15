@@ -41,6 +41,11 @@ except Exception:
 # -- Options for HTML output ----------------------------------------------
 
 html_title = project + ' version ' + release
+html_theme = 'sphinx_rtd_theme'
+html_static_path = ['_static']
+html_context = {
+    'css_files': ['_static/custom.css'],
+}
 
 # -- Options for LaTeX output ---------------------------------------------
 
