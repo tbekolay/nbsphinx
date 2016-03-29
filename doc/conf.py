@@ -19,6 +19,9 @@ exclude_patterns = ['_build', '**.ipynb_checkpoints']
 # Default language for syntax highlighting (e.g. in Markdown cells)
 highlight_language = 'none'
 
+# Don't change suffix of "Show Source" links to .txt:
+html_sourcelink_keep_suffix = True
+
 # -- The settings below this line are not specific to nbsphinx ------------
 
 master_doc = 'index'
