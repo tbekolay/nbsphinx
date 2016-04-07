@@ -1,0 +1,393 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Usage &mdash; nbsphinx version 0.2.5-14-g5268883</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.2.5-14-g5268883',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="nbsphinx version 0.2.5-14-g5268883" href="index.html" />
+    <link rel="next" title="Markdown Cells" href="markdown-cells.html" />
+    <link rel="prev" title="Jupyter Notebook Tools for Sphinx" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput > div,
+div.nbinput div[class^=highlight],
+div.nbinput div[class^=highlight] pre,
+div.nboutput,
+div.nboutput > div,
+div.nboutput div[class^=highlight],
+div.nboutput div[class^=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput > :first-child pre {
+    color: navy;
+}
+
+/* output prompt */
+div.nboutput > :first-child pre {
+    color: darkred;
+}
+
+/* all prompts */
+div.nbinput > :first-child[class^=highlight],
+div.nboutput > :first-child[class^=highlight],
+div.nboutput > :first-child {
+    min-width: 11ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+
+/* input/output area */
+div.nbinput > :nth-child(2)[class^=highlight],
+div.nboutput > :nth-child(2),
+div.nboutput > :nth-child(2)[class^=highlight] {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+/* input area */
+div.nbinput > :nth-child(2)[class^=highlight] {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput  > :nth-child(2).stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansiblack { color: black; }
+.ansired { color: darkred; }
+.ansigreen { color: darkgreen; }
+.ansiyellow { color: #c4a000; }
+.ansiblue { color: darkblue; }
+.ansipurple { color: darkviolet; }
+.ansicyan { color: steelblue; }
+/* See https://github.com/jupyter/nbconvert/issues/174 */
+.ansigray { color: gray; }  /* nbconvert CSS */
+.ansigrey { color: gray; }  /* nbconvert HTML output */
+
+.ansibgblack { background-color: black; }
+.ansibgred { background-color: red; }
+.ansibggreen { background-color: green; }
+.ansibgyellow { background-color: yellow; }
+.ansibgblue { background-color: blue; }
+.ansibgpurple { background-color: magenta; }
+.ansibgcyan { background-color: cyan; }
+.ansibggray { background-color: gray; }
+
+.ansibold { font-weight: bold; }
+</style>
+<div class="section" id="Usage">
+<h1>Usage<a class="headerlink" href="#Usage" title="Permalink to this headline">¶</a></h1>
+<p>Install <code class="docutils literal"><span class="pre">nbsphinx</span></code> with
+<a class="reference external" href="https://pip.pypa.io/en/latest/installing/">pip</a>:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>pip install nbsphinx --user
+</pre></div>
+</div>
+<p>If you change your mind, you can un-install it with:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>pip uninstall nbsphinx
+</pre></div>
+</div>
+<div class="section" id="Sphinx-Setup">
+<h2>Sphinx Setup<a class="headerlink" href="#Sphinx-Setup" title="Permalink to this headline">¶</a></h2>
+<p>In the directory with your notebook files, run this command (assuming
+you have <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> installed already):</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>sphinx-quickstart
+</pre></div>
+</div>
+<p>Answer the questions that appear on the screen. In case of doubt, just
+press the <code class="docutils literal"><span class="pre">&lt;Return&gt;</span></code> key to take the default values.</p>
+<p>After that, there will be a few brand-new files in the current
+directory. You&#8217;ll have to make a few changes to the file named
+<a class="reference external" href="conf.py">conf.py</a>. You should at least check if those two variables
+contain the right things:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;nbsphinx&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sphinx.ext.mathjax&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">exclude_patterns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_build&#39;</span><span class="p">,</span> <span class="s1">&#39;**.ipynb_checkpoints&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Once your <code class="docutils literal"><span class="pre">conf.py</span></code> is in place, edit the file named
+<a class="reference internal" href="index.html"><em>index.rst</em></a> and add the file names of your notebooks (with
+or without the <code class="docutils literal"><span class="pre">.ipynb</span></code> extension) to the <code class="docutils literal"><span class="pre">toctree</span></code> directive.</p>
+</div>
+<div class="section" id="Running-Sphinx">
+<h2>Running Sphinx<a class="headerlink" href="#Running-Sphinx" title="Permalink to this headline">¶</a></h2>
+<p>To create the HTML pages, use this command:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>sphinx-build &lt;source-dir&gt; &lt;build-dir&gt;
+</pre></div>
+</div>
+<p>If you have many notebooks, you can do a parallel build by using the
+<code class="docutils literal"><span class="pre">-j</span></code> option:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>sphinx-build &lt;source-dir&gt; &lt;build-dir&gt; -j&lt;number-of-processes&gt;
+</pre></div>
+</div>
+<p>For example, if your source files are in the current directory and you
+have 4 CPU cores, you can run this:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>sphinx-build . _build -j4
+</pre></div>
+</div>
+<p>Afterwards, you can find the main HTML file in <code class="docutils literal"><span class="pre">_build/index.html</span></code>.</p>
+<p>Subsequent builds will be faster, because only those source files which
+have changed will be re-built. To force re-building all source files,
+use the <code class="docutils literal"><span class="pre">-E</span></code> option.</p>
+<p>To create LaTeX output, use:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>sphinx-build &lt;source-dir&gt; &lt;build-dir&gt; -b latex
+</pre></div>
+</div>
+<p>If you don&#8217;t know how to create a PDF file from the LaTeX output, you
+should have a look at
+<a class="reference external" href="http://users.phys.psu.edu/~collins/software/latexmk-jcc/">Latexmk</a>
+(see also <a class="reference external" href="http://mg.readthedocs.org/latexmk.html">this tutorial</a>).</p>
+<p>Sphinx can automatically check if the links you are using are still
+valid. Just invoke it like this:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>sphinx-build &lt;source-dir&gt; &lt;build-dir&gt; -b linkcheck
+</pre></div>
+</div>
+</div>
+<div class="section" id="Watching-for-Changes-with-sphinx-autobuild">
+<h2>Watching for Changes with <code class="docutils literal"><span class="pre">sphinx-autobuild</span></code><a class="headerlink" href="#Watching-for-Changes-with-sphinx-autobuild" title="Permalink to this headline">¶</a></h2>
+<p>If you think it&#8217;s tedious to run the command <code class="docutils literal"><span class="pre">sphinx-build</span></code> again and
+again when you make changes to your notebooks, you&#8217;ll be happy to hear
+that there is a way to avoid that:
+<a class="reference external" href="https://pypi.python.org/pypi/sphinx-autobuild">sphinx-autobuild</a>!</p>
+<p>It can be installed with</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>pip install sphinx-autobuild --user
+</pre></div>
+</div>
+<p>You can start auto-building your files with</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>sphinx-autobuild &lt;source-dir&gt; &lt;build-dir&gt;
+</pre></div>
+</div>
+<p>This will start a local webserver which will serve the generated HTML
+pages at <a class="reference external" href="http://localhost:8000/">http://localhost:8000/</a>. Whenever you save changes in one of
+your notebooks, the appropriate HTML page(s) will be re-built and when
+finished, your browser view will be refreshed automatically. Neat!</p>
+<p>You can also abuse this to auto-build the LaTeX output:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>sphinx-autobuild &lt;source-dir&gt; &lt;build-dir&gt; -b latex
+</pre></div>
+</div>
+<p>However, to auto-build the final PDF file, you&#8217;ll need an additional
+tool. Again, you can use <code class="docutils literal"><span class="pre">latexmk</span></code> for this (see
+<a class="reference external" href="#Running-Sphinx">above</a>). Change to the build directory and run</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>latexmk -pdf -pvc
+</pre></div>
+</div>
+<p>If your PDF viewer isn&#8217;t opened because of LaTeX build errors, you can
+use the option <code class="docutils literal"><span class="pre">-f</span></code> to <em>force</em> creating a PDF file.</p>
+</div>
+<div class="section" id="Automatic-Creation-of-HTML-and-PDF-output-on-readthedocs.org">
+<h2>Automatic Creation of HTML and PDF output on readthedocs.org<a class="headerlink" href="#Automatic-Creation-of-HTML-and-PDF-output-on-readthedocs.org" title="Permalink to this headline">¶</a></h2>
+<p>This is very easy!</p>
+<ol class="arabic">
+<li><p class="first">Create an account on <a class="reference external" href="https://readthedocs.org/">https://readthedocs.org/</a> and add your
+Github/Bitbucket repository (or any publicly available
+Git/Subversion/Mercurial/Bazaar repository).</p>
+</li>
+<li><p class="first">Create a file named <a class="reference external" href="requirements.txt">requirements.txt</a> (or
+whatever name you wish) in your repository containing the required
+pip packages:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>nbsphinx
+ipykernel
+</pre></div>
+</div>
+</li>
+<li><p class="first">In the &#8220;Advanced Settings&#8221; on readthedocs.org, specify your
+<code class="docutils literal"><span class="pre">requirements.txt</span></code> file (or however you called it) in the box
+labelled &#8220;Requirements file&#8221;. Kinda obvious, isn&#8217;t it?</p>
+</li>
+<li><p class="first">Still in the &#8220;Advanced Settings&#8221;, make sure the right Python
+interpreter is chosen. This must be the same version (2.x or 3.x) as
+you were using in your notebooks!</p>
+</li>
+<li><p class="first">Make sure that in the &#8220;Settings&#8221; of your Github repository, under
+&#8220;Webhooks &amp; services&#8221;, &#8220;ReadTheDocs&#8221; is listed and activated in the
+&#8220;Services&#8221; section. If not, use &#8220;Add service&#8221;. There is probably a
+similar thing for Bitbucket.</p>
+</li>
+<li><p class="first">Done!</p>
+</li>
+</ol>
+<p>After that, you only have to &#8220;push&#8221; to your repository and the HTML
+pages and the PDF file of your stuff are automagically created on
+readthedocs.org. Awesome!</p>
+<p>You can even have different versions of your stuff, just use Git tags
+and branches and select in the readthedocs.org settings (under &#8220;Admin&#8221;,
+&#8220;Versions&#8221;) which of those should be created.</p>
+</div>
+<div class="section" id="HTML-Themes">
+<h2>HTML Themes<a class="headerlink" href="#HTML-Themes" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">nbsphinx</span></code> extension does <em>not</em> provide its own theme, you can use
+any of the available themes or create a custom one, if you feel like it.</p>
+<p>The following links show how the <code class="docutils literal"><span class="pre">nbsphinx</span></code> input and output cells
+look like in different themes.</p>
+<div class="section" id="Sphinx's-Built-in-Themes">
+<h3>Sphinx&#8217;s Built-in Themes<a class="headerlink" href="#Sphinx's-Built-in-Themes" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://nbsphinx.readthedocs.org/en/alabaster-theme/">http://nbsphinx.readthedocs.org/en/alabaster-theme/</a></p>
+<p><a class="reference external" href="http://nbsphinx.readthedocs.org/en/pyramid-theme/">http://nbsphinx.readthedocs.org/en/pyramid-theme/</a></p>
+<p><a class="reference external" href="http://nbsphinx.readthedocs.org/en/classic-theme/">http://nbsphinx.readthedocs.org/en/classic-theme/</a></p>
+<p><a class="reference external" href="http://nbsphinx.readthedocs.org/en/bizstyle-theme/">http://nbsphinx.readthedocs.org/en/bizstyle-theme/</a></p>
+<p><a class="reference external" href="http://nbsphinx.readthedocs.org/en/haiku-theme/">http://nbsphinx.readthedocs.org/en/haiku-theme/</a></p>
+<p><a class="reference external" href="http://nbsphinx.readthedocs.org/en/traditional-theme/">http://nbsphinx.readthedocs.org/en/traditional-theme/</a></p>
+<p><a class="reference external" href="http://nbsphinx.readthedocs.org/en/agogo-theme/">http://nbsphinx.readthedocs.org/en/agogo-theme/</a></p>
+</div>
+<div class="section" id="3rd-party-Themes">
+<h3>3rd-party Themes<a class="headerlink" href="#3rd-party-Themes" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://nbsphinx.readthedocs.org/en/readthedocs-theme/">http://nbsphinx.readthedocs.org/en/readthedocs-theme/</a></p>
+<p><a class="reference external" href="http://nbsphinx.readthedocs.org/en/bootstrap-theme/">http://nbsphinx.readthedocs.org/en/bootstrap-theme/</a></p>
+<p><a class="reference external" href="http://nbsphinx.readthedocs.org/en/cloud-theme/">http://nbsphinx.readthedocs.org/en/cloud-theme/</a></p>
+<p><a class="reference external" href="http://nbsphinx.readthedocs.org/en/py3doc-enhanced-theme/">http://nbsphinx.readthedocs.org/en/py3doc-enhanced-theme/</a></p>
+<p><a class="reference external" href="http://nbsphinx.readthedocs.org/en/basicstrap-theme/">http://nbsphinx.readthedocs.org/en/basicstrap-theme/</a></p>
+<p><a class="reference external" href="http://nbsphinx.readthedocs.org/en/dotted-theme/">http://nbsphinx.readthedocs.org/en/dotted-theme/</a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Usage</a><ul>
+<li><a class="reference internal" href="#Sphinx-Setup">Sphinx Setup</a></li>
+<li><a class="reference internal" href="#Running-Sphinx">Running Sphinx</a></li>
+<li><a class="reference internal" href="#Watching-for-Changes-with-sphinx-autobuild">Watching for Changes with <code class="docutils literal"><span class="pre">sphinx-autobuild</span></code></a></li>
+<li><a class="reference internal" href="#Automatic-Creation-of-HTML-and-PDF-output-on-readthedocs.org">Automatic Creation of HTML and PDF output on readthedocs.org</a></li>
+<li><a class="reference internal" href="#HTML-Themes">HTML Themes</a><ul>
+<li><a class="reference internal" href="#Sphinx's-Built-in-Themes">Sphinx&#8217;s Built-in Themes</a></li>
+<li><a class="reference internal" href="#3rd-party-Themes">3rd-party Themes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Jupyter Notebook Tools for Sphinx</a></li>
+      <li>Next: <a href="markdown-cells.html" title="next chapter">Markdown Cells</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/usage.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Matthias Geier.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/usage.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

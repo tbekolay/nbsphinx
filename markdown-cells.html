@@ -1,0 +1,367 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Markdown Cells &mdash; nbsphinx version 0.2.5-14-g5268883</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.2.5-14-g5268883',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="nbsphinx version 0.2.5-14-g5268883" href="index.html" />
+    <link rel="next" title="Code Cells" href="code-cells.html" />
+    <link rel="prev" title="Usage" href="usage.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput > div,
+div.nbinput div[class^=highlight],
+div.nbinput div[class^=highlight] pre,
+div.nboutput,
+div.nboutput > div,
+div.nboutput div[class^=highlight],
+div.nboutput div[class^=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput > :first-child pre {
+    color: navy;
+}
+
+/* output prompt */
+div.nboutput > :first-child pre {
+    color: darkred;
+}
+
+/* all prompts */
+div.nbinput > :first-child[class^=highlight],
+div.nboutput > :first-child[class^=highlight],
+div.nboutput > :first-child {
+    min-width: 11ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+
+/* input/output area */
+div.nbinput > :nth-child(2)[class^=highlight],
+div.nboutput > :nth-child(2),
+div.nboutput > :nth-child(2)[class^=highlight] {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+/* input area */
+div.nbinput > :nth-child(2)[class^=highlight] {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput  > :nth-child(2).stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansiblack { color: black; }
+.ansired { color: darkred; }
+.ansigreen { color: darkgreen; }
+.ansiyellow { color: #c4a000; }
+.ansiblue { color: darkblue; }
+.ansipurple { color: darkviolet; }
+.ansicyan { color: steelblue; }
+/* See https://github.com/jupyter/nbconvert/issues/174 */
+.ansigray { color: gray; }  /* nbconvert CSS */
+.ansigrey { color: gray; }  /* nbconvert HTML output */
+
+.ansibgblack { background-color: black; }
+.ansibgred { background-color: red; }
+.ansibggreen { background-color: green; }
+.ansibgyellow { background-color: yellow; }
+.ansibgblue { background-color: blue; }
+.ansibgpurple { background-color: magenta; }
+.ansibgcyan { background-color: cyan; }
+.ansibggray { background-color: gray; }
+
+.ansibold { font-weight: bold; }
+</style>
+<div class="section" id="Markdown-Cells">
+<h1>Markdown Cells<a class="headerlink" href="#Markdown-Cells" title="Permalink to this headline">¶</a></h1>
+<p>We can use <em>emphasis</em>, <strong>boldface</strong>, <code class="docutils literal"><span class="pre">preformatted</span> <span class="pre">text</span></code>.</p>
+<blockquote>
+<div>It looks like strike-out text is not supported:
+[STRIKEOUT:strikethrough].</div></blockquote>
+<ul class="simple">
+<li>Red</li>
+<li>Green</li>
+<li>Blue</li>
+</ul>
+<hr class="docutils" />
+<ol class="arabic simple">
+<li>One</li>
+<li>Two</li>
+<li>Three</li>
+</ol>
+<div class="section" id="Equations">
+<h2>Equations<a class="headerlink" href="#Equations" title="Permalink to this headline">¶</a></h2>
+<p>Equations can be formatted really nicely, either inline, like
+<span class="math">\(\text{e}^{i\pi} = -1\)</span>, or on a separate line, like</p>
+<div class="math">
+\[\int_{-\infty}^\infty f(x) \delta(x - x_0) dx = f(x_0)\]</div>
+<p><em>Note:</em> Avoid leading and trailing spaces around math expressions,
+otherwise errors like the following will occur when Sphinx is running:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>ERROR: Unknown interpreted text role &quot;raw-latex&quot;.
+</pre></div>
+</div>
+<p>See also the <a class="reference external" href="http://pandoc.org/README.html#math">pandoc docs</a>:</p>
+<blockquote>
+<div>Anything between two <code class="docutils literal"><span class="pre">$</span></code> characters will be treated as TeX math.
+The opening <code class="docutils literal"><span class="pre">$</span></code> must have a non-space character immediately to its
+right, while the closing <code class="docutils literal"><span class="pre">$</span></code> must have a non-space character
+immediately to its left, and must not be followed immediately by a
+digit.</div></blockquote>
+</div>
+<div class="section" id="Code">
+<h2>Code<a class="headerlink" href="#Code" title="Permalink to this headline">¶</a></h2>
+<p>We can also write code with nice syntax highlighting:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Tables">
+<h2>Tables<a class="headerlink" href="#Tables" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="31%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">A</th>
+<th class="head">B</th>
+<th class="head">A and B</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr class="row-odd"><td>True</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr class="row-even"><td>False</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr class="row-odd"><td>True</td>
+<td>True</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="Images">
+<h2>Images<a class="headerlink" href="#Images" title="Permalink to this headline">¶</a></h2>
+<p>PNG file (local): <img alt="Jupyter notebook icon" src="_images/notebook_icon.png" /></p>
+<p>SVG file (local): <img alt="Python logo" src="_images/python_logo.svg" /></p>
+<p>PNG file (remote): <img alt="Python logo (remote)" src="https://www.python.org/static/img/python-logo-large.png" /></p>
+<p>SVG file (remote): <img alt="Jupyter logo (remote)" src="http://jupyter.org/assets/nav_logo.svg" /></p>
+</div>
+<div class="section" id="Links-to-Other-Notebooks">
+<h2>Links to Other Notebooks<a class="headerlink" href="#Links-to-Other-Notebooks" title="Permalink to this headline">¶</a></h2>
+<p>Relative links to local notebooks can be used: <a class="reference internal" href="subdir/another.html"><em>a link to a notebook in
+a subdirectory</em></a>, <a class="reference internal" href="orphan.html"><em>a link to an orphan
+notebook</em></a> (latter won&#8217;t work in LaTeX output, because
+orphan pages are not included there).</p>
+<p>This is how a link is created in Markdown:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>[a link to a notebook in a subdirectory](subdir/another.ipynb)
+</pre></div>
+</div>
+<p>Markdown also supports <em>reference-style</em> links: <a class="reference internal" href="subdir/another.html"><em>a reference-style
+link</em></a>, <a class="reference internal" href="subdir/another.html"><em>another version of the same
+link</em></a>.</p>
+<p>These can be created with this syntax:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>[a reference-style link][mylink]
+
+[mylink]: subdir/another.ipynb
+</pre></div>
+</div>
+<p>Links to sub-sections are also possible, e.g. <a class="reference internal" href="subdir/another.html#A-Sub-Section"><span>this
+subsection</span></a>.</p>
+<p>This link was created with:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>[this subsection](subdir/another.ipynb#A-Sub-Section)
+</pre></div>
+</div>
+<p>You just have to remember to replace spaces with hyphens!</p>
+<p>BTW, links to sections of the current notebook work, too, e.g.
+<a class="reference external" href="#Links-to-Other-Notebooks">beginning of this section</a>.</p>
+<p>This can be done, as expected, like this:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>[beginning of this section](#Links-to-Other-Notebooks)
+</pre></div>
+</div>
+</div>
+<div class="section" id="Links-to-*.rst-Files-(and-Other-Sphinx-Source-Files)">
+<h2>Links to <code class="docutils literal"><span class="pre">*.rst</span></code> Files (and Other Sphinx Source Files)<a class="headerlink" href="#Links-to-*.rst-Files-(and-Other-Sphinx-Source-Files)" title="Permalink to this headline">¶</a></h2>
+<p>Links to files whose extension is in the configuration value
+<a class="reference external" href="http://www.sphinx-doc.org/config.html#confval-source_suffix">source_suffix</a>,
+will be converted to links to the generated HTML/LaTeX pages. Example:
+<a class="reference internal" href="rst.html"><em>A reStructuredText file</em></a>.</p>
+<p>This was created with:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>[A reStructuredText file](rst.rst)
+</pre></div>
+</div>
+<p>Links to sub-sections are not (yet?) possible.</p>
+</div>
+<div class="section" id="Links-to-Local-Files-(HTML-only)">
+<h2>Links to Local Files (HTML only)<a class="headerlink" href="#Links-to-Local-Files-(HTML-only)" title="Permalink to this headline">¶</a></h2>
+<p>Links to local files (other than Jupyter notebooks and other Sphinx
+source files) are also possible, e.g.
+<a class="reference external" href="requirements.txt">requirements.txt</a>.</p>
+<p>This was simply created with:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>[requirements.txt](requirements.txt)
+</pre></div>
+</div>
+<p>The linked files are automatically copied to the HTML output directory.
+For LaTeX output, no link is created.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Markdown Cells</a><ul>
+<li><a class="reference internal" href="#Equations">Equations</a></li>
+<li><a class="reference internal" href="#Code">Code</a></li>
+<li><a class="reference internal" href="#Tables">Tables</a></li>
+<li><a class="reference internal" href="#Images">Images</a></li>
+<li><a class="reference internal" href="#Links-to-Other-Notebooks">Links to Other Notebooks</a></li>
+<li><a class="reference internal" href="#Links-to-*.rst-Files-(and-Other-Sphinx-Source-Files)">Links to <code class="docutils literal"><span class="pre">*.rst</span></code> Files (and Other Sphinx Source Files)</a></li>
+<li><a class="reference internal" href="#Links-to-Local-Files-(HTML-only)">Links to Local Files (HTML only)</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="usage.html" title="previous chapter">Usage</a></li>
+      <li>Next: <a href="code-cells.html" title="next chapter">Code Cells</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/markdown-cells.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Matthias Geier.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/markdown-cells.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
